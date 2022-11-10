@@ -1,16 +1,16 @@
 public class BTree{
 
 	//Instance fields
-	private BTree root;
+	private char root;
 
 	// Constructor
-	public BTree(BTree r){
+	public BTree(char r){
 		root = r;
 	}
 
 	//Method that returns root of tree
 	public char getRoot(){
 		return root;
-	}
-	
+	}	
+
 }

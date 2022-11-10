@@ -5,10 +5,17 @@
 import java.util.*;
 
  public class ArithmeticApp{
+
  	public void buildExpression(String E){
  		Stack stack = new Stack();
  		for(char i = 0; i<E.length(); i++){
- 			if(char == )
+ 			if(i == ) //If the character is a num or operator x
+ 				/*create a single-node binary tree temp whose root
+ 				 *stores x */
+
+ 				TNode temp = new TNode();
+ 				stack.push(temp);
+
  		}
 
  	}
