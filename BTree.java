@@ -26,4 +26,18 @@ public class BTree{
 
 	}
 
+	//postOrder(BSTNode v)
+	// Prints out the keys of the tree in a postorder traversal
+	public void postOrder(TNode v){
+		if(v.left()!=null){
+			postOrder(v.left());
+		}
+		if(v.right()!=null){
+			postOrder(v.right());
+		}
+		System.out.println(v.e());
+	
+	}
+
+
 }
