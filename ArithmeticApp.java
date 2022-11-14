@@ -7,7 +7,7 @@ import java.util.*;
  public class ArithmeticApp{
 
  	public boolean operator(char c){
- 		if(c == "+" || c == "-" || c == "*" || c == "/"){
+ 		if(c == '+' || c == '-' || c == '*' || c == '/'){
  			return true;
  		}
  		else{
@@ -15,8 +15,8 @@ import java.util.*;
  		}
  	}
 
- 	public void buildExpression(String expression){
- 		Stack stack = new Stack();
+ 	public TNode buildExpression(String expression){
+ 		Stack<TNode> stack = new Stack<TNode>();
  		for(int i = 0; i<expression.length(); i++){
  			char x = expression.charAt(i); // char x to hold the character of aperator or number
  			if(operator(x)){ //If the character is a number or operator x
@@ -27,19 +27,31 @@ import java.util.*;
  				TNode temp = new TNode(x, null, null);
  				stack.push(temp);
 
- 				BTree tree = new BTree(temp);
- 				tree.addRoot(temp);
+ 				// BTree tree = new BTree(temp);
+ 				// tree.addRoot(temp);
 
 	 		}
 
  			/* On the other hand, if the character is a closed
  			 * parenthesis ")" */
- 			else if(charAt(i) == ")"){
+ 			else if(x == ')'){
  				//Pop the top three trees from the stack
+
+ 				TNode temp = new TNode(x, null, null);
+
+ 				TNode first = stack.pop();
+ 				TNode second = stack.pop();
+ 				TNode third = stack.pop();
 
  				//Attach the trees for e1 and e2 as children for o
 
+ 				temp.left = second;
+ 				temp.right = first;
+
+ 				//second.attach(second.root,third.root,first.root); 
+
  				//Push the resulting tree back onto the stack
+ 				stack.push(temp);
 
  			}
 
@@ -47,10 +59,13 @@ import java.util.*;
 
  		/*After the loop, return the top element of the stack which is the
  		 * final expression tree */ 
-
- 	}
-
- 	public static void main(String[] args){
+ 		 TNode temp = stack.pop();
+ 		 return temp;
 
  	}
  }
+
+ // 	public static void main(String[] args){
+
+ // 	}
+ // }
