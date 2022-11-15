@@ -22,4 +22,9 @@ public class TNode{
 		return right;
 	}
 
+	public void attach(TNode l, TNode r){
+		left=l;   //assigning to right of root
+		right=r;   //assigning to left of root
+	}
+
 }

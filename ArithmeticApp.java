@@ -27,8 +27,8 @@ public class ArithmeticApp{
 				TNode temp = new TNode(x, null, null);
 				stack.push(temp);
 
-				// BTree tree = new BTree(temp);
-				// tree.addRoot(temp);
+				//BTree tree = new BTree(temp);
+				//tree.addRoot(temp);
 
  		}
 
@@ -37,22 +37,21 @@ public class ArithmeticApp{
 			else if(x == ')'){
 				//Pop the top three trees from the stack
 
-				TNode temp = new TNode(x, null, null);
+				//TNode temp = new TNode(x, null, null);
 
 				TNode first = stack.pop();
 				TNode second = stack.pop();
-				//TNode third = stack.pop();
+				TNode third = stack.pop();
 
 				//Attach the trees for e1 and e2 as children for o
 
-				temp.left = second;
-				temp.right = first;
+				// temp.left = second;
+				// temp.right = first;
 
-				//second.attach(second.root,third.root,first.root); 
+				second.attach(third,first); 
 
 				//Push the resulting tree back onto the stack
-				stack.push(temp);
-
+				stack.push(second);
 			}
 
 		}
