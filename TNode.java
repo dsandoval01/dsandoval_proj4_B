@@ -9,4 +9,17 @@ public class TNode{
 		right = r;
 
 	}
+
+	public int e(){
+		return element;
+	}
+
+	public TNode left(){
+		return left;
+	}
+
+	public TNode right(){
+		return right;
+	}
+
 }

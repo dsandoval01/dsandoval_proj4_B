@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ArithmeticApp{
 
-	public boolean operator(char c){
+	public static boolean operator(char c){
 		if(c == '+' || c == '-' || c == '*' || c == '/'){
 			return true;
 		}
@@ -15,11 +15,11 @@ public class ArithmeticApp{
 		}
 	}
 
-	public TNode buildExpression(String expression){
+	public static TNode buildExpression(String expression){
 		Stack<TNode> stack = new Stack<TNode>();
 		for(int i = 0; i<expression.length(); i++){
 			char x = expression.charAt(i); // char x to hold the character of aperator or number
-			if(operator(x)){ //If the character is a number or operator x
+			if(operator(x) || Character.isDigit(x)){ //If the character is a number or operator x
 
 				/*create a single-node binary tree temp whose root
 				 *stores x */
@@ -41,7 +41,7 @@ public class ArithmeticApp{
 
 				TNode first = stack.pop();
 				TNode second = stack.pop();
-				TNode third = stack.pop();
+				//TNode third = stack.pop();
 
 				//Attach the trees for e1 and e2 as children for o
 
@@ -59,17 +59,28 @@ public class ArithmeticApp{
 
 		/*After the loop, return the top element of the stack which is the
 		 * final expression tree */ 
-		 TNode temp = stack.pop();
-		 return temp;
+		 return stack.pop();
 
 	}
 
-	public static void main(String[] args){
-		String postfix = "(3*5)/5";
-		ArithmeticApp calc = new ArithmeticApp();
-
-		calc.buildExpression(postfix);
-		System.out.println(postfix);
+	public static void postOrder(TNode root){
+		if(root.left()!=null){
+			postOrder(root.left);
+		}
+		if(root.right()!=null){
+			postOrder(root.right);
+		}
+		System.out.println(root.element);
 
 	}
+
+	// public static void main(String[] args){
+	// 	String postfix = "(3*5)/5";
+	// 	//ArithmeticApp calc = new ArithmeticApp();
+
+	// 	TNode r = buildExpression(postfix);
+
+	// 	System.out.println(postOrder(r));
+
+	// }
 }
